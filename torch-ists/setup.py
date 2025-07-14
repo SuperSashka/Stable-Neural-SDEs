@@ -2,10 +2,10 @@ from setuptools import setup, find_packages
 
 install_requires = [
     'ray',
-    'numpy==1.23.5',
+    'numpy',
     'pandas',
     'matplotlib',
-    'scipy,
+    'scipy',
     'scikit-learn',
     'tqdm',
     'sktime',
