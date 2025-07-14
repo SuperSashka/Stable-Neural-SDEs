@@ -261,7 +261,8 @@ def get_mimiciii_data(args):
 
 
 def get_physionet_data(args, device, q, flag=1):
-    train_dataset_obj = PhysioNet('data/physionet', train=True,
+    import os
+    train_dataset_obj = PhysioNet(os.path.join(os.path.dirname(__file__),'data','physionet'), train=True,
                                   quantization=q,
                                   download=True, n_samples=min(10000, args.n),
                                   device=device)

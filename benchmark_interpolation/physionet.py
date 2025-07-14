@@ -83,10 +83,10 @@ class PhysioNet(object):
     
     if self.device == 'cpu':
       self.data = torch.load(os.path.join(self.processed_folder, data_file), map_location='cpu')
-      self.labels = torch.load(os.path.join(self.processed_folder, self.label_file), map_location='cpu')
+      self.labels = torch.load(os.path.join(self.processed_folder, self.label_file), map_location='cpu',weights_only=False)
     else:
       self.data = torch.load(os.path.join(self.processed_folder, data_file))
-      self.labels = torch.load(os.path.join(self.processed_folder, self.label_file))
+      self.labels = torch.load(os.path.join(self.processed_folder, self.label_file),weights_only=False)
 
     if n_samples is not None:
       self.data = self.data[:n_samples]
@@ -122,6 +122,7 @@ class PhysioNet(object):
 
     for url in self.urls:
       filename = url.rpartition('/')[2]
+      filename = filename.replace('?download','')
       download_url(url, self.raw_folder, filename, None)
       tar = tarfile.open(os.path.join(self.raw_folder, filename), "r:gz")
       tar.extractall(self.raw_folder)

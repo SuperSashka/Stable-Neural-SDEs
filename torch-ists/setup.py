@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 install_requires = [
-    'ray==2.3.0',
+    'ray',
     'numpy==1.23.5',
     'pandas==1.5.3',
     'matplotlib==3.7.1',
@@ -10,11 +10,11 @@ install_requires = [
     'tqdm==4.65.0',
     'sktime==0.16.1',
     'stribor==0.1.0',
-    'torchcde==0.2.5',
-    'torchdiffeq==0.2.1',
-    'torchdyn==1.0.4',
+    'torchcde',
+    'torchdiffeq',
+    'torchdyn',
     'torchmetrics==0.9.3',
-    'torchsde==0.2.5',
+    'torchsde',
 ]
 
 # with open('README.md', 'r') as f:

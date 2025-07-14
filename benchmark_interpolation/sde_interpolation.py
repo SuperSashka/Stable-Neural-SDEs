@@ -14,6 +14,7 @@ import utils
 import torchcde
 from torch_ists import ists_layer
 
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--niters', type=int, default=2000)
 parser.add_argument('--lr', type=float, default=0.01)
@@ -117,11 +118,11 @@ if __name__ == '__main__':
     if args.dec == 'rnn3':
         dec = models.dec_rnn3(
             dim, torch.linspace(0, 1., args.num_ref_points), args.latent_dim, 
-            args.gen_hidden, 128, learn_emb=args.learn_emb).to(device)
+            args.gen_hidden, 128, learn_emb=args.learn_emb,device=device)
     elif args.dec == 'mtan_rnn':
         dec = models.dec_mtan_rnn(
             dim, torch.linspace(0, 1., args.num_ref_points), args.latent_dim, args.gen_hidden, 
-            embed_time=128, learn_emb=args.learn_emb, num_heads=args.dec_num_heads).to(device)
+            embed_time=128, learn_emb=args.learn_emb, num_heads=args.dec_num_heads,device=device)
 
 
     params = (list(dec.parameters()) + list(rec.parameters()))
